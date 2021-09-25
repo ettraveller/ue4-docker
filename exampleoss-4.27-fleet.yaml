@@ -1,0 +1,37 @@
+apiVersion: "agones.dev/v1"
+kind: Fleet
+metadata:
+  name: exampleoss-4.27
+spec: 
+  replicas: 1
+  template:
+      spec:
+      health:
+        disabled: true
+      ports:
+        - 
+          containerPort: 7777
+          name: game
+        - 
+          containerPort: 12345
+          name: beacon
+      template: 
+        spec: 
+          containers: 
+            - 
+              env: 
+                - 
+                  name: IS_REDPOINT_DEDICATED_SERVER
+                  value: "true"
+              image: gcr.io/wlghksjelly/edu
+              name: exampleoss-4-27
+              resources: 
+                limits: 
+                  cpu: 1000m
+                  memory: 1000Mi
+                requests: 
+                  cpu: 1000m
+                  memory: 1000Mi
+          imagePullSecrets: 
+            - 
+              name: gitlab

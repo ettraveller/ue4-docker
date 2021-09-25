@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta23
+kind: Config
+metadata:
+  name: ue-
+build:
+  artifacts:
+  - image: gcr.io/wlghksjelly/edu
+    context: 
+    docker:
+      dockerfile: exampleoss-4.27.Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - ./exampleoss-4.27-fleet.yaml
